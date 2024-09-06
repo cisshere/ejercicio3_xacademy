@@ -1,6 +1,7 @@
 let carrito = {
   precioTotal: 0,
   productos: [],
+  categorias: [],
 };
 
 const productosDelSuper = [
@@ -27,6 +28,7 @@ const agregarProducto = (nombre, unidades) => {
       carrito.productos.push({
         nombre: mercaderia.nombre,
         precio: mercaderia.precio,
+        categoria: mercaderia.categoria,
         unidades: unidades,
       });
     }
@@ -39,24 +41,24 @@ const agregarProducto = (nombre, unidades) => {
   }
 };
 
-
-const borrarProducto = (nombre) => {
+ const borrarProducto = (nombre) => {
     const productoIndex = carrito.productos.findIndex(producto => producto.nombre === nombre);
 
     if (productoIndex === -1) {
         console.log("El producto no se encuentra en el carrito");
         return;
     }
-    
     const productoBorrar = carrito.productos[productoIndex];
     carrito.productos.splice(productoIndex, 1);  
     carrito.precioTotal -= productoBorrar.precio * productoBorrar.unidades;
+
 };
 
 agregarProducto("Jabon", 2);
 agregarProducto("Shampoo", 3);
-console.log(carrito);
+console.log(JSON.stringify(carrito));
 
 
 borrarProducto("Jabon");
-console.log(carrito);
+console.log(JSON.stringify(carrito));
+
