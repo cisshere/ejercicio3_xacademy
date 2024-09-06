@@ -21,7 +21,7 @@ const agregarProducto = (nombre, unidades) => {
 
   if (mercaderia) {
     if (productoEnCarrito) {
-      carrito.precioTotal -= productoEnCarrito.precio * productoEnCarrito.unidades;
+      carrito.precioTotal += productoEnCarrito.precio * productoEnCarrito.unidades;
       productoEnCarrito.unidades += unidades;
     } else {
       carrito.productos.push({
