@@ -22,14 +22,16 @@ const agregarProducto = (nombre, unidades) => {
 
   if (mercaderia) {
     if (productoEnCarrito) {
-      carrito.precioTotal += productoEnCarrito.precio * productoEnCarrito.unidades;
       productoEnCarrito.unidades += unidades;
+      carrito.precioTotal += productoEnCarrito.precio * productoEnCarrito.unidades;
     } else {
       carrito.productos.push({
         nombre: mercaderia.nombre,
         precio: mercaderia.precio,
-        categoria: mercaderia.categoria,
         unidades: unidades,
+      });
+      carrito.categorias.push({
+        categorias: mercaderia.categoria,
       });
     }
     carrito.precioTotal += mercaderia.precio * unidades;
@@ -48,8 +50,10 @@ const agregarProducto = (nombre, unidades) => {
         console.log("El producto no se encuentra en el carrito");
         return;
     }
+
     const productoBorrar = carrito.productos[productoIndex];
     carrito.productos.splice(productoIndex, 1);  
+    carrito.categorias.splice(productoIndex, 1);
     carrito.precioTotal -= productoBorrar.precio * productoBorrar.unidades;
 
 };
