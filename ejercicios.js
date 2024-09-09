@@ -30,9 +30,7 @@ const agregarProducto = (nombre, unidades) => {
         precio: mercaderia.precio,
         unidades: unidades,
       });
-      carrito.categorias.push({
-        categorias: mercaderia.categoria,
-      });
+      carrito.categorias.push(mercaderia.categoria);
     }
     carrito.precioTotal += mercaderia.precio * unidades;
   } 
@@ -60,9 +58,19 @@ const agregarProducto = (nombre, unidades) => {
 
 agregarProducto("Jabon", 2);
 agregarProducto("Shampoo", 3);
-console.log(JSON.stringify(carrito));
+console.log(carrito);
 
 
-borrarProducto("Jabon");
-console.log(JSON.stringify(carrito));
+// borrarProducto("Jabon");
+// console.log(JSON.stringify(carrito));
 
+
+
+const categoriasArray = () =>{
+
+  const categoriasDelArray = carrito.categorias.map(producto => producto);
+
+  return new Set(categoriasDelArray);
+}
+
+console.log(categoriasArray());
