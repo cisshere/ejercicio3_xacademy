@@ -58,11 +58,12 @@ const agregarProducto = (nombre, unidades) => {
 
 agregarProducto("Jabon", 2);
 agregarProducto("Shampoo", 3);
-console.log(carrito);
+agregarProducto("Fideos",4)
+console.log(JSON.stringify(carrito));
 
 
-// borrarProducto("Jabon");
-// console.log(JSON.stringify(carrito));
+ borrarProducto("Jabon");
+ console.log(JSON.stringify(carrito));
 
 
 
